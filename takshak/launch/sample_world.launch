@@ -1,0 +1,42 @@
+<launch>
+
+  <!-- Gazebo parameters -->
+  <arg name="world" default="empty"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- Launch Sample World -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find takshak)/worlds/sample_world.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- Spawn Robot model -->
+  <arg name="x" value="0.0"/>
+  <arg name="y" value="4.0"/>
+  <arg name="z" value="0.0"/>
+  <arg name="roll" value="0.0"/>
+  <arg name="pitch" value="0.0"/>
+  <arg name="yaw" value="-1.57"/>
+  <param name="robot_description" command="cat '$(find takshak)/models/husky_robot_model/model.urdf'"/>
+
+  <node name="husky_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" 
+    args="-urdf -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model husky" />
+  
+  <!-- Joint state publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+  <!-- Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" />
+
+</launch>

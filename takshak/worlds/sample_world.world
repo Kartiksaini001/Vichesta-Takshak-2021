@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="default">
+<!-- Sun -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+<!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+<!-- Empty Sample World -->
+    <include>
+      <uri>model://sample_world</uri>
+      <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+    </include>
+
+<!-- Tables -->
+    <model name='Table1'>
+      <include>
+        <uri>model://table</uri>
+        <pose>6 -4.5 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    <model name='Table2'>
+      <include>
+        <uri>model://table</uri>
+        <pose>4 -4.5 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+    
+  <!-- Colored Boxes -->
+    <include>
+      <uri>model://box_red</uri>
+      <pose>6 -4.5 1.5 0 0 0</pose>
+      <static>false</static>
+    </include>
+    <include>
+      <uri>model://box_blue</uri>
+      <pose>4 -4.5 1.5 0 0 0</pose>
+      <static>false</static>
+    </include>
+
+  <!-- Balls -->
+  <model name='Ball1'>
+    <include>
+      <uri>model://ball_pink</uri>
+      <pose>6.42 0.63 0.4 0 0 0</pose>
+      <static>true</static>
+    </include>
+  </model>
+  <model name='Ball2'>
+    <include>
+      <uri>model://ball_pink</uri>
+      <pose>6.89 1.35 0.4 0 0 0</pose>
+      <static>true</static>
+    </include>
+  </model>
+  <model name='Ball3'>
+    <include>
+      <uri>model://ball_pink</uri>
+      <pose>7.31 0.06 0.4 0 0 0</pose>
+      <static>true</static>
+    </include>
+  </model>
+
+  <!-- Aruco markers -->
+    <include>
+      <uri>model://aruco_marker_1</uri>
+      <pose>6 -4 0.4 1.57 -1.57 3.14</pose>
+      <static>true</static>
+    </include>
+    <include>
+      <uri>model://aruco_marker_2</uri>
+      <pose>4 -4 0.4 1.57 -1.57 3.14</pose>
+      <static>true</static>
+    </include>
+
+  </world>
+</sdf>
